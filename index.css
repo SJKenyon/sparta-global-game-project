@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+td {
+  width: 20px;
+  height: 20px;
+}
+
+.blank {
+  background-color: blank;
+}
+
+.snake {
+  background-color: yellow;
+  border-radius: 2px;
+}
+
+.wall {
+  background-color: green;
+}
+
+.fruit {
+  background-color: red;
+  border-radius: 8px;
+}
