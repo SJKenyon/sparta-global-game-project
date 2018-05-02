@@ -1,5 +1,20 @@
 # Game Project
 
+## How to download
+1. Go to my [Github](https://github.com/SJKenyon/sparta-global-game-project) and copy the repository.
+2. Open your computers terminal and navigate to the directory you would like the game file in.
+3. Write this when you are in the correct directory and press enter.
+```
+  git clone *paste my repo link here*
+```
+4. The file should be locally downloaded on to your computer system. Either open the game using the terminal by writing
+```
+  open index.html
+```
+or use your file system to open the game directly.
+
+---
+
 ## Instructions
 To start the game press any key, the pink block will start to move and the game has begun. Using the directional arrow keys you must move the pink block to collide with the red fruit block. This will increase the score and the length of the snake making it harder as the game progresses. Going into a wall or the snake itself will end the game and a modal will appear with the option to try again. This reloads the current screen so you can start from the beginning.The aim of the game is to become as long as possible before dying.
 
