@@ -1,12 +1,14 @@
 //alert("SNEK");
 
-var snakeX = 15;
-var snakeY = 3;
+var snakeX = 5;
+var snakeY = 5;
 var height = 30;
 var width = 30;
 var interval = 100;
 var increment = 1;
 
+var score = 0;
+var length = 0;
 var tailX = [snakeX];
 var tailY = [snakeY];
 var fX;
@@ -17,7 +19,6 @@ var direction = -1; //up=0 down=-1 left=1 right=2
 var int;
 
 //GAME START
-
 function run(){
   init();
   int = setInterval(gameLoop, interval);
@@ -25,7 +26,6 @@ function run(){
 }
 
 //Creates variables for game start
-
 function init(){
   createMap();
   createSnake();
@@ -33,7 +33,6 @@ function init(){
 }
 
 //CREATE MAP
-
 function createMap(){
   document.write("<table>");
     for(var y = 0; y < height; y++){
@@ -51,26 +50,20 @@ function createMap(){
 };
 
 //CREATE SNAKE
-
 function createSnake(){ //Creates snake at (3,3)
   return set(snakeX, snakeY, "snake");
 }
 
 function get(x,y){
-  //if(x != null && y != null){
     return document.getElementById(x+"-"+y);
-  //}
 }
 
 function set(x, y, value){
-  // if(x != null && y != null)
     get(x,y).setAttribute("class", value);
-
 }
 
 //CREATE FRUIT
-
-function random(min, max){ //Creates random place within the map
+function random(min, max){
   return Math.floor(Math.random() * (max - min) + min);
 }
 
@@ -84,7 +77,7 @@ function createFruit(){
     var fruitX = random(1, width-1);
     var fruitY = random(1, height-1);
     if(getType(fruitX,fruitY) == "blank")
-      found = true; //Checks if fruit has been found
+      found = true;
   }
   set(fruitX, fruitY, "fruit");
   fX = fruitX;
@@ -96,25 +89,16 @@ window.addEventListener("keypress", function key(event){
   var key = event.keyCode;
   if(key == 38 && direction != -1){ //up
     direction = 0;
-    console.log("UP");
   }else if(key == 40 && direction != 0){ //down
     direction = -1;
-    console.log("DOWN");
   }else if(key == 37 && direction != 2){ //left
     direction = 1;
-    console.log("LEFT");
   }else if(key == 39 && direction != 1){ //right
     direction = 2;
-    console.log("RIGHT");
-  }  //up=0 down=-1 left=1 right=2
-  if(!running){
+  }else if(!running){
     running = true;
-  }else if(key == 32){
-    running = false;
-    alert("GAME PAUSED");
   }
 });
-
 
 function gameLoop(){
   if(running && !gameOver){
@@ -138,6 +122,25 @@ function update(){
     snakeX++;
   }
   set(snakeX, snakeY, "snake");
+  for(var i = tailX.length-1; i>=0; i--){
+    if(snakeX == tailX[i] && snakeY == tailY[i]){
+      gameOver = true;
+      nomDeath();
+      score = 0;
+      break;
+    }
+  }
+  if(snakeX == 0 || snakeX == width-1 || snakeY == 0 || snakeY == height-1){
+    gameOver = true;
+    wallDeath();
+    score = 0;
+    console.log("RESET");
+  }else if(snakeX == fX && snakeY == fY){
+    createFruit();
+    length+=increment;
+    score+=1
+  }
+  document.getElementById("score").innerHTML = "Wurst Extension: "+ score;
 }
 
 function tailUpdate(){
@@ -147,6 +150,21 @@ function tailUpdate(){
   }
   tailX[0] = snakeX;
   tailY[0] = snakeY;
+}
+
+//MODAL 1
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
+
+function wallDeath() {
+    document.getElementById("deathMessage").innerHTML = "Walls are not edible."
+    document.getElementById("highscore").innerHTML = "Score: " + score;
+    modal.style.display = "block";
+}
+function nomDeath() {
+    document.getElementById("deathMessage").innerHTML = "Canibalism is illegal."
+    document.getElementById("highscore").innerHTML = "Score: " + score;
+    modal.style.display = "block";
 }
 
 run();
