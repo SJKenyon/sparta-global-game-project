@@ -16,7 +16,7 @@ or use your file system to open the game directly.
 ---
 
 ## Instructions
-To start the game press any key, the pink block will start to move and the game has begun. Using the directional arrow keys you must move the pink block to collide with the red fruit block. This will increase the score and the length of the snake making it harder as the game progresses. Going into a wall or the snake itself will end the game and a modal will appear with the option to try again. This reloads the current screen so you can start from the beginning.The aim of the game is to become as long as possible before dying.
+To start the game press any key, the pink block will start to move and the game has begun. Using the directional arrow keys you must move the pink block to collide with the red fruit block. This will increase the score and the length of the snake making it harder as the game progresses. There is also a red poison block in the game which will decrease your lives if you collide with it. Going into a wall or the snake itself will end the game and a modal will appear with the option to try again. This reloads the current screen so you can start from the beginning. The aim of the game is to become as long as possible before dying.
 
 ---
 

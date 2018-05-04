@@ -2,27 +2,45 @@
 
 var snakeX = 5;
 var snakeY = 5;
-var height = 30;
-var width = 30;
+var height;
+var width;
+height = width = 30; //prompt("Grid size?");
 var interval = 100;
 var increment = 1;
 
 var score = 0;
-var length = 0;
+var length = 3;
 var tailX = [snakeX];
 var tailY = [snakeY];
 var fX;
 var fY;
+var pX;
+var pY;
+var lives = 3;
 var running = false;
 var gameOver = false;
 var direction = -1; //up=0 down=-1 left=1 right=2
 var int;
+var hide = document.getElementById("myModal2");
+
+function hideInstructions(){
+    if (hide.style.display == "none") {
+        hide.style.display = "block";
+    } else {
+        hide.style.display = "none";
+    }
+}
 
 //GAME START
 function run(){
+  if(height < 40 && height > 10){
+  hide.style.display = "block";
   init();
   int = setInterval(gameLoop, interval);
-  //Runs game loop and updates every interval
+  }else{
+  //alert("Enter number between 10-40")
+  location.reload();
+  }
 }
 
 //Creates variables for game start
@@ -30,6 +48,7 @@ function init(){
   createMap();
   createSnake();
   createFruit();
+  createPoison();
 }
 
 //CREATE MAP
@@ -50,7 +69,7 @@ function createMap(){
 };
 
 //CREATE SNAKE
-function createSnake(){ //Creates snake at (3,3)
+function createSnake(){
   return set(snakeX, snakeY, "snake");
 }
 
@@ -62,7 +81,7 @@ function set(x, y, value){
     get(x,y).setAttribute("class", value);
 }
 
-//CREATE FRUIT
+//CREATE FRUIT AND POISON
 function random(min, max){
   return Math.floor(Math.random() * (max - min) + min);
 }
@@ -82,6 +101,19 @@ function createFruit(){
   set(fruitX, fruitY, "fruit");
   fX = fruitX;
   fY = fruitY;
+}
+
+function createPoison(){
+  var found2 = false;
+  while(!found2 && (length < (width-2)*(height-2)+1)){
+    var poisonX = random(1, width-1);
+    var poisonY = random(1, height-1);
+    if(getType(poisonX,poisonY) == "blank")
+      found2 = true;
+  }
+  set(poisonX, poisonY, "poison");
+  pX = poisonX;
+  pY = poisonY;
 }
 
 //Create direction
@@ -130,6 +162,10 @@ function update(){
       break;
     }
   }
+  if(lives == 0){
+    gameOver = true;
+    poisonDeath();
+  }
   if(snakeX == 0 || snakeX == width-1 || snakeY == 0 || snakeY == height-1){
     gameOver = true;
     wallDeath();
@@ -139,8 +175,12 @@ function update(){
     createFruit();
     length+=increment;
     score+=1
+  }else if(snakeX == pX && snakeY == pY){
+    createPoison();
+    lives-=1
   }
-  document.getElementById("score").innerHTML = "Wurst Extension: "+ score;
+  document.getElementById("score").innerHTML = "Score: "+ score;
+  document.getElementById("lives").innerHTML = "Lives: "+ lives;
 }
 
 function tailUpdate(){
@@ -166,5 +206,12 @@ function nomDeath() {
     document.getElementById("highscore").innerHTML = "Score: " + score;
     modal.style.display = "block";
 }
+function poisonDeath() {
+    document.getElementById("deathMessage").innerHTML = "Don't eat the poison."
+    document.getElementById("highscore").innerHTML = "Score: " + score;
+    modal.style.display = "block";
+}
+
+
 
 run();
