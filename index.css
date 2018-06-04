@@ -1,0 +1,138 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #000033;
+  width: 665px;
+  font-family: "Courier New", monospace;
+  font-size: 25px;
+  margin: auto;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: white;
+}
+
+h4 {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 50px;
+}
+
+td {
+  width: 20px;
+  height: 20px;
+}
+
+img {
+  height: 326px;
+  width: 512px;
+}
+
+.blank {
+  background-color: blank;
+}
+
+.snake {
+  background-color: #FF69B4;
+  border-radius: 2px;
+}
+
+.wall {
+  background-color: green;
+}
+
+.fruit {
+  background-color: red;
+  border-radius: 8px;
+}
+
+.poison {
+  background-color: red;
+  border-radius: 8px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #cccccc;
+    margin: 15% auto;
+    padding: 40px;
+    border: 1px solid #888;
+    text-align: center;
+    width: 50%;
+}
+
+.modal2 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content2 {
+    background-color: #cccccc;
+    margin: 15% auto;
+    padding: 40px;
+    border: 1px solid #888;
+    text-align: center;
+    width: 50%;
+}
+
+.retry:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.retry {
+  background-color: green;
+  border-radius: 30px;
+  color: white;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.hide {
+  background-color: black;
+  border-radius: 30px;
+  color: white;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.hide:hover{
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+}

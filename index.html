@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Game Project</title>
+  </head>
+  <body>
+    <h1>DIE WURST</h1>
+    <h3 id="score">Score: 0</h3>
+
+    <h3 id="lives">Lives: 3</h3>
+
+    <div id="myModal2" class="modal2">
+      <div class="modal-content">
+        <h4>Instructions</h4>
+        <br>
+        <p>To start the game press the space bar, then the pink block will start to move and the game has begun. Using the directional arrow keys you must move the pink block to collide with the red fruit block. This will increase the score and the length of the snake making it harder as the game progresses.</p>
+        <p>There is also a red poison block that will decrease your lives. You need to make sure you remember which is which. Going into a wall or the snake's own body will end the game and a screen will appear with the option to try again.</p>
+        <p>The aim of the game is to become as long as possible before dying.</p>
+        <span class="hide" onclick="hideInstructions()">Continue?</span>
+      </div>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p id="deathMessage">YOU ARE DEAD</p>
+        <p id="highscore"></p>
+        <br>
+        <span class="retry" onclick="location.reload()">Retry?</span>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+
+  </body>
+</html>
