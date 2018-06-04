@@ -4,7 +4,7 @@ var snakeX = 5;
 var snakeY = 5;
 var height;
 var width;
-height = width = 30; //prompt("Grid size?");
+height = width = 30;
 var interval = 100;
 var increment = 1;
 
@@ -38,7 +38,6 @@ function run(){
   init();
   int = setInterval(gameLoop, interval);
   }else{
-  //alert("Enter number between 10-40")
   location.reload();
   }
 }
@@ -211,7 +210,5 @@ function poisonDeath() {
     document.getElementById("highscore").innerHTML = "Score: " + score;
     modal.style.display = "block";
 }
-
-
 
 run();
