@@ -1,13 +1,12 @@
 # Game Project
 
 ## How to download
-1. Go to my [Github](https://github.com/SJKenyon/sparta-global-game-project) and copy the repository.
-2. Open your computers terminal and navigate to the directory you would like the game file in.
-3. Write this when you are in the correct directory and press enter.
+1. Open your computers terminal and navigate to the directory you would like the game file in.
+2. Write this when you are in the correct directory and press enter.
 ```
   git clone *paste my repo link here*
 ```
-4. The file should be locally downloaded on to your computer system. Either open the game using the terminal by writing
+3. The file should be locally downloaded on to your computer system. Either open the game using the terminal by writing
 ```
   open index.html
 ```
